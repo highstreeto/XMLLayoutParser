@@ -1,3 +1,19 @@
+/*
+Copyright 2013 Martin Hochstrasser
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+ */
+
 package at.highstreeto.XMLLayoutParser;
 
 import java.io.IOException;
@@ -19,6 +35,10 @@ import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
 import com.esotericsoftware.tablelayout.Cell;
 
+/**
+ * 
+ * @author highstreeto
+ */
 public class LayoutParser {
 	public interface ElementParser {
 		Actor parseElement(Element element, Map<Element, Actor> actors,
@@ -39,7 +59,7 @@ public class LayoutParser {
 		actors = new HashMap<>();
 		namedActors = new HashMap<>();
 		parsers = new HashMap<>();
-		
+
 		parsers.put("Label", new ElementParser() {
 
 			@Override
@@ -184,11 +204,11 @@ public class LayoutParser {
 			}
 		});
 	}
-	
+
 	public void putParser(String elementName, ElementParser elementParser) {
 		parsers.put(elementName, elementParser);
 	}
-	
+
 	public Collection<Actor> load() throws LayoutParseException {
 		XmlReader reader = new XmlReader();
 		try {
