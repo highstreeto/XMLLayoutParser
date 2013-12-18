@@ -14,50 +14,40 @@ See the License for the specific language governing permissions and
 limitations under the License.
  */
 
-package at.highstreeto.XMLLayoutParser.element.base;
+package at.highstreeto.XMLLayoutParser.element;
 
 import at.highstreeto.XMLLayoutParser.LayoutParseException;
 import at.highstreeto.XMLLayoutParser.LayoutParserContext;
+import at.highstreeto.XMLLayoutParser.element.base.ElementParser;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.utils.XmlReader.Element;
 
-/**
- * The abstract class for element-wise parsers. The implementations of this
- * class have to provide a way to load / save an actor to a XML file.
- * 
- * @author highstreeto
- * 
- */
-public interface ElementParser {
+public class TextFieldParser implements ElementParser {
 
-	/**
-	 * Returns the name of the name of the XML element
-	 * 
-	 * @return
-	 */
-	String getElementName();
+	@Override
+	public String getElementName() {
+		return "TextField";
+	}
 
-	/**
-	 * 
-	 * @return
-	 */
-	Class<? extends Actor> getActorClass();
+	@Override
+	public Class<? extends Actor> getActorClass() {
+		return TextField.class;
+	}
 
-	/**
-	 * 
-	 * @param element
-	 * @return
-	 * @throws LayoutParseException
-	 */
-	Actor load(Element element, LayoutParserContext context)
-			throws LayoutParseException;
+	@Override
+	public Actor load(Element element, LayoutParserContext context) throws LayoutParseException {
+		String text = element.getText();
+		TextField textField = new TextField(text == null ? "" : text,
+				context.getSkin());
+		
+		context.addActor(textField, element);
+		return textField;
+	}
 
-	/**
-	 * 
-	 * @param actor
-	 * @throws LayoutParseException
-	 */
-	void save(Actor actor, LayoutParserContext context)
-			throws LayoutParseException;
+	@Override
+	public void save(Actor actor, LayoutParserContext context) throws LayoutParseException {
+
+	}
 }
