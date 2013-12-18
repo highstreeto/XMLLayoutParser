@@ -19,7 +19,6 @@ package at.highstreeto.XMLLayoutParser;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Map;
 
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -29,30 +28,48 @@ import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
 
 /**
+ * Converts a XML file in a Collection of {@link Actor Actors} and vice-versa.
+ * It uses the XMLReader from libGDX
  * 
  * @author highstreeto
  */
 public class LayoutParser {
-	public interface ElementParser {
-		Actor parseElement(Element element, Map<Element, Actor> actors,
-				Skin skin, LayoutParser layoutParser)
-				throws LayoutParseException;
-	}
-
-	private FileHandle layoutFile;
 	private ElementParsers parsers;
 
-	public LayoutParser(FileHandle layoutFile, Skin skin) {
-		this.layoutFile = layoutFile;
-
+	/**
+	 * Initalizes a new LayoutParser with the default set of parsers (from
+	 * {@link ElementParser.getDefault()}
+	 */
+	public LayoutParser() {
 		parsers = ElementParsers.getDefault();
 	}
 
+	/**
+	 * 
+	 * @param parsers
+	 */
+	public LayoutParser(ElementParsers parsers) {
+		this();
+		this.parsers = parsers;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
 	public ElementParsers getParsers() {
 		return parsers;
 	}
 
-	public Collection<Actor> load(Skin skin) throws LayoutParseException {
+	/**
+	 * 
+	 * @param layoutFile
+	 * @param skin
+	 * @return
+	 * @throws LayoutParseException
+	 */
+	public Collection<Actor> load(FileHandle layoutFile, Skin skin)
+			throws LayoutParseException {
 		XmlReader reader = new XmlReader();
 		LayoutParserContext context = new LayoutParserContext();
 		context.setParsers(parsers);
@@ -78,8 +95,15 @@ public class LayoutParser {
 		}
 	}
 
-	public void load(Stage stage, Skin skin) throws LayoutParseException {
-		for (Actor i : load(skin)) {
+	/**
+	 * 
+	 * @param stage
+	 * @param skin
+	 * @throws LayoutParseException
+	 */
+	public void load(FileHandle layoutFile, Stage stage, Skin skin)
+			throws LayoutParseException {
+		for (Actor i : load(layoutFile, skin)) {
 			stage.addActor(i);
 		}
 	}

@@ -23,6 +23,7 @@ import com.badlogic.gdx.utils.XmlReader.Element;
 import at.highstreeto.XMLLayoutParser.LayoutParseException;
 import at.highstreeto.XMLLayoutParser.LayoutParserContext;
 import at.highstreeto.XMLLayoutParser.element.base.ElementParser;
+import at.highstreeto.XMLLayoutParser.element.base.ElementParserHelper;
 
 public class TextButtonParser implements ElementParser {
 
@@ -44,6 +45,8 @@ public class TextButtonParser implements ElementParser {
 				context.getSkin());
 
 		context.addActor(textButton, element);
+		ElementParserHelper.setActorName(element, textButton);
+		
 		return textButton;
 	}
 

@@ -16,5 +16,14 @@ limitations under the License.
 
 package at.highstreeto.XMLLayoutParser.element.base;
 
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.utils.XmlReader.Element;
+
 public final class ElementParserHelper {
+
+	public static void setActorName(Element element, Actor actor) {
+		if (element.getAttributes().containsKey("name")) {
+			actor.setName(element.getAttribute("name"));
+		}
+	}
 }

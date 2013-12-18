@@ -23,6 +23,7 @@ import com.badlogic.gdx.utils.XmlReader.Element;
 import at.highstreeto.XMLLayoutParser.LayoutParseException;
 import at.highstreeto.XMLLayoutParser.LayoutParserContext;
 import at.highstreeto.XMLLayoutParser.element.base.ElementParser;
+import at.highstreeto.XMLLayoutParser.element.base.ElementParserHelper;
 
 public class TableParser implements ElementParser {
 
@@ -64,6 +65,8 @@ public class TableParser implements ElementParser {
 		}
 
 		context.addActor(table, element);
+		ElementParserHelper.setActorName(element, table);
+		
 		for (int i = 0; i < element.getChildCount(); i++) {
 			Element child = element.getChild(i);
 			context.getParsers().getParserByElementName(child)
