@@ -23,6 +23,7 @@ import com.badlogic.gdx.utils.XmlReader.Element;
 import at.highstreeto.XMLLayoutParser.LayoutParseException;
 import at.highstreeto.XMLLayoutParser.LayoutParserContext;
 import at.highstreeto.XMLLayoutParser.element.base.ElementParser;
+import at.highstreeto.XMLLayoutParser.element.base.ElementParserHelper;
 
 public class LabelParser implements ElementParser {
 
@@ -44,9 +45,13 @@ public class LabelParser implements ElementParser {
 	public Actor load(Element element, LayoutParserContext context)
 			throws LayoutParseException {
 		String text = element.getText();
-		Label label = new Label(text == null ? "" : text, context.getSkin());
+
+		Label label = new Label(text == null ? "" : text, context.getSkin(),
+				ElementParserHelper.getStyle(element));
 
 		context.addActor(label, element);
+		ElementParserHelper.setActorName(element, label);
+
 		return label;
 	}
 

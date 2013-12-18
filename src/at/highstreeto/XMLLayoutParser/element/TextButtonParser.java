@@ -16,14 +16,14 @@ limitations under the License.
 
 package at.highstreeto.XMLLayoutParser.element;
 
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.utils.XmlReader.Element;
-
 import at.highstreeto.XMLLayoutParser.LayoutParseException;
 import at.highstreeto.XMLLayoutParser.LayoutParserContext;
 import at.highstreeto.XMLLayoutParser.element.base.ElementParser;
 import at.highstreeto.XMLLayoutParser.element.base.ElementParserHelper;
+
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.XmlReader.Element;
 
 public class TextButtonParser implements ElementParser {
 
@@ -42,11 +42,11 @@ public class TextButtonParser implements ElementParser {
 			throws LayoutParseException {
 		String text = element.getText();
 		TextButton textButton = new TextButton(text == null ? "" : text,
-				context.getSkin());
+				context.getSkin(), ElementParserHelper.getStyle(element));
 
 		context.addActor(textButton, element);
 		ElementParserHelper.setActorName(element, textButton);
-		
+
 		return textButton;
 	}
 

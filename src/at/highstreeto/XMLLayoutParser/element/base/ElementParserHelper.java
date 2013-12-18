@@ -22,8 +22,18 @@ import com.badlogic.gdx.utils.XmlReader.Element;
 public final class ElementParserHelper {
 
 	public static void setActorName(Element element, Actor actor) {
-		if (element.getAttributes().containsKey("name")) {
+		if (element.getAttributes() != null
+				&& element.getAttributes().containsKey("name")) {
 			actor.setName(element.getAttribute("name"));
+		}
+	}
+
+	public static String getStyle(Element element) {
+		if (element.getAttributes() != null
+				&& element.getAttributes().containsKey("styleName")) {
+			return element.getAttribute("styleName");
+		} else {
+			return "default";
 		}
 	}
 }

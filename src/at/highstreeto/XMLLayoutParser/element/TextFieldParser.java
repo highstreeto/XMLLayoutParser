@@ -38,19 +38,21 @@ public class TextFieldParser implements ElementParser {
 	}
 
 	@Override
-	public Actor load(Element element, LayoutParserContext context) throws LayoutParseException {
+	public Actor load(Element element, LayoutParserContext context)
+			throws LayoutParseException {
 		String text = element.getText();
 		TextField textField = new TextField(text == null ? "" : text,
-				context.getSkin());
-		
+				context.getSkin(), ElementParserHelper.getStyle(element));
+
 		context.addActor(textField, element);
 		ElementParserHelper.setActorName(element, textField);
-		
+
 		return textField;
 	}
 
 	@Override
-	public void save(Actor actor, LayoutParserContext context) throws LayoutParseException {
+	public void save(Actor actor, LayoutParserContext context)
+			throws LayoutParseException {
 
 	}
 }
