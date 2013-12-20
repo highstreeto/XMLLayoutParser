@@ -19,6 +19,7 @@ package at.highstreeto.XMLLayoutParser.element;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.XmlReader.Element;
+import com.badlogic.gdx.utils.XmlWriter;
 
 import at.highstreeto.XMLLayoutParser.LayoutParseException;
 import at.highstreeto.XMLLayoutParser.LayoutParserContext;
@@ -56,10 +57,9 @@ public class LabelParser implements ElementParser {
 	}
 
 	@Override
-	public void save(Actor actor, LayoutParserContext context)
+	public void save(XmlWriter writer, Actor actor, LayoutParserContext context)
 			throws LayoutParseException {
 		// TODO Auto-generated method stub
 
 	}
-
 }

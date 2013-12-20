@@ -24,6 +24,7 @@ import at.highstreeto.XMLLayoutParser.element.base.ElementParserHelper;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.XmlReader.Element;
+import com.badlogic.gdx.utils.XmlWriter;
 
 public class TextButtonParser implements ElementParser {
 
@@ -51,10 +52,9 @@ public class TextButtonParser implements ElementParser {
 	}
 
 	@Override
-	public void save(Actor actor, LayoutParserContext context)
+	public void save(XmlWriter writer, Actor actor, LayoutParserContext context)
 			throws LayoutParseException {
 		// TODO Auto-generated method stub
 
 	}
-
 }

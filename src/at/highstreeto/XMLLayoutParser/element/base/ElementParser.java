@@ -20,6 +20,7 @@ import at.highstreeto.XMLLayoutParser.LayoutParseException;
 import at.highstreeto.XMLLayoutParser.LayoutParserContext;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.utils.XmlWriter;
 import com.badlogic.gdx.utils.XmlReader.Element;
 
 /**
@@ -58,6 +59,6 @@ public interface ElementParser {
 	 * @param actor
 	 * @throws LayoutParseException
 	 */
-	void save(Actor actor, LayoutParserContext context)
+	void save(XmlWriter writer, Actor actor, LayoutParserContext context)
 			throws LayoutParseException;
 }

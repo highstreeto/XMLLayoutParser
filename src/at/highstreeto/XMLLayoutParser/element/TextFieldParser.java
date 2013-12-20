@@ -16,6 +16,8 @@ limitations under the License.
 
 package at.highstreeto.XMLLayoutParser.element;
 
+import java.io.IOException;
+
 import at.highstreeto.XMLLayoutParser.LayoutParseException;
 import at.highstreeto.XMLLayoutParser.LayoutParserContext;
 import at.highstreeto.XMLLayoutParser.element.base.ElementParser;
@@ -24,6 +26,7 @@ import at.highstreeto.XMLLayoutParser.element.base.ElementParserHelper;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.utils.XmlReader.Element;
+import com.badlogic.gdx.utils.XmlWriter;
 
 public class TextFieldParser implements ElementParser {
 
@@ -51,8 +54,20 @@ public class TextFieldParser implements ElementParser {
 	}
 
 	@Override
-	public void save(Actor actor, LayoutParserContext context)
+	public void save(XmlWriter writer, Actor actor, LayoutParserContext context)
 			throws LayoutParseException {
-
+		try {
+			TextField textField = (TextField) actor;
+			writer.element(getElementName());
+			ElementParserHelper.writeDefaultAttributes(writer, actor);
+			
+			if (!textField.getText().isEmpty()) {
+				writer.text(textField.getText());
+			}
+			
+			writer.pop();
+		} catch (IOException e) {
+			throw new LayoutParseException(e);
+		}
 	}
 }

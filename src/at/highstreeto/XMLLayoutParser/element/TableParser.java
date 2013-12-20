@@ -19,6 +19,7 @@ package at.highstreeto.XMLLayoutParser.element;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.XmlReader.Element;
+import com.badlogic.gdx.utils.XmlWriter;
 
 import at.highstreeto.XMLLayoutParser.LayoutParseException;
 import at.highstreeto.XMLLayoutParser.LayoutParserContext;
@@ -66,7 +67,7 @@ public class TableParser implements ElementParser {
 
 		context.addActor(table, element);
 		ElementParserHelper.setActorName(element, table);
-		
+
 		for (int i = 0; i < element.getChildCount(); i++) {
 			Element child = element.getChild(i);
 			context.getParsers().getParserByElementName(child)
@@ -76,7 +77,7 @@ public class TableParser implements ElementParser {
 	}
 
 	@Override
-	public void save(Actor actor, LayoutParserContext context)
+	public void save(XmlWriter writer, Actor actor, LayoutParserContext context)
 			throws LayoutParseException {
 		// TODO Auto-generated method stub
 

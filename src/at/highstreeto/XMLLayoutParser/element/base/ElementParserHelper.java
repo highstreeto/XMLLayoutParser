@@ -16,7 +16,10 @@ limitations under the License.
 
 package at.highstreeto.XMLLayoutParser.element.base;
 
+import java.io.IOException;
+
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.utils.XmlWriter;
 import com.badlogic.gdx.utils.XmlReader.Element;
 
 public final class ElementParserHelper {
@@ -34,6 +37,13 @@ public final class ElementParserHelper {
 			return element.getAttribute("styleName");
 		} else {
 			return "default";
+		}
+	}
+
+	public static void writeDefaultAttributes(XmlWriter writer, Actor actor)
+			throws IOException {
+		if (actor.getName() != null) {
+			writer.attribute("name", actor.getName());
 		}
 	}
 }

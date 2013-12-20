@@ -26,10 +26,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
+import com.badlogic.gdx.utils.XmlWriter;
 
 /**
- * Converts a XML file in a Collection of {@link Actor Actors} and vice-versa.
- * It uses the XMLReader from libGDX
+ * Converts a XML file in a Collection of Actors and vice-versa. It uses the
+ * XMLReader from libGDX
  * 
  * @author highstreeto
  */
@@ -37,16 +38,18 @@ public class LayoutParser {
 	private ElementParsers parsers;
 
 	/**
-	 * Initalizes a new LayoutParser with the default set of parsers (from
-	 * {@link ElementParser.getDefault()}
+	 * Initializes a new LayoutParser with the default set of parsers (from
+	 * {@link ElementParsers#getDefault()}
 	 */
 	public LayoutParser() {
 		parsers = ElementParsers.getDefault();
 	}
 
 	/**
+	 * Initializes a new LayoutParser with the Parsers from parsers
 	 * 
 	 * @param parsers
+	 *            ElementParsers used for loading/saving data
 	 */
 	public LayoutParser(ElementParsers parsers) {
 		this();
@@ -105,6 +108,24 @@ public class LayoutParser {
 			throws LayoutParseException {
 		for (Actor i : load(layoutFile, skin)) {
 			stage.addActor(i);
+		}
+	}
+
+	public void save(FileHandle layoutFile, Collection<Actor> actors)
+			throws LayoutParseException {
+		try (XmlWriter writer = new XmlWriter(layoutFile.writer(false))) {
+			LayoutParserContext context = new LayoutParserContext();
+			context.setParsers(parsers);
+			
+			writer.element("Layout");
+			
+			for (Actor i : actors) {
+				parsers.getParserByClass(i.getClass()).save(writer, i, context);
+			}
+			
+			writer.pop();
+		} catch (IOException e) {
+			throw new LayoutParseException(e);
 		}
 	}
 }

@@ -23,6 +23,7 @@ import at.highstreeto.XMLLayoutParser.element.base.ElementParser;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.XmlReader.Element;
+import com.badlogic.gdx.utils.XmlWriter;
 import com.esotericsoftware.tablelayout.Cell;
 
 public class CellParser implements ElementParser {
@@ -84,7 +85,7 @@ public class CellParser implements ElementParser {
 	}
 
 	@Override
-	public void save(Actor actor, LayoutParserContext context)
+	public void save(XmlWriter writer, Actor actor, LayoutParserContext context)
 			throws LayoutParseException {
 		// TODO Auto-generated method stub
 
