@@ -50,18 +50,14 @@ public class CellParser implements ElementParser {
 		Cell<?> cell = table.add(actor);
 
 		if (element.getAttributes().containsKey("fill")) {
-			switch (element.getAttribute("fill")) {
-				case "x":
-					cell.fillX();
-					break;
-				case "y":
-					cell.fillY();
-					break;
-				case "xy":
-					cell.fill();
-					break;
-				default:
-					throw new LayoutParseException();
+			if ("x".equals(element.getAttribute("fill"))) {
+				cell.fillX();
+			} else if ("y".equals(element.getAttribute("fill"))) {
+				cell.fillY();
+			} else if ("xy".equals(element.getAttribute("fill"))) {
+				cell.fill();
+			} else {
+				throw new LayoutParseException();
 			}
 		} // Padding - Format: Top Left Bottom Right
 		if (element.getAttributes().containsKey("pad")) {

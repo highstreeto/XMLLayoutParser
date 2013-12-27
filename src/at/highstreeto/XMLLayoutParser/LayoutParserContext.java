@@ -30,8 +30,8 @@ public class LayoutParserContext {
 	private Skin skin;
 
 	public LayoutParserContext() {
-		elementsByActor = new HashMap<>();
-		actorsByElement = new HashMap<>();
+		elementsByActor = new HashMap<Actor, Element>();
+		actorsByElement = new HashMap<Element, Actor>();
 	}
 
 	public ElementParsers getParsers() {

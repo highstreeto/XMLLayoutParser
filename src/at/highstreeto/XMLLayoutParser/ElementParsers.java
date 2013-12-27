@@ -36,8 +36,8 @@ public class ElementParsers {
 	private Map<Class<? extends Actor>, ElementParser> parsersByClass;
 
 	public ElementParsers() {
-		parsersByElementName = new HashMap<>();
-		parsersByClass = new HashMap<>();
+		parsersByElementName = new HashMap<String, ElementParser>();
+		parsersByClass = new HashMap<Class<? extends Actor>, ElementParser>();
 	}
 
 	public static ElementParsers getDefault() {

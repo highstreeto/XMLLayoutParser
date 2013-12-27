@@ -49,18 +49,12 @@ public class TableParser implements ElementParser {
 		if (element.getAttributes().containsKey("debug")) {
 			String[] parts = element.getAttribute("debug").split(" ");
 			for (String i : parts) {
-				switch (i) {
-					case "cell":
-						table.debugCell();
-						break;
-					case "widget":
-						table.debugWidget();
-						break;
-					case "table":
-						table.debugTable();
-						break;
-					default:
-						break;
+				if ("cell".equals(i)) {
+					table.debugCell();
+				} else if ("widget".equals(i)) {
+					table.debugWidget();
+				} else if ("table".equals(i)) {
+					table.debugTable();
 				}
 			}
 		}

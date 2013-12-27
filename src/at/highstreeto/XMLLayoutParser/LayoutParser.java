@@ -79,7 +79,7 @@ public class LayoutParser {
 		context.setSkin(skin);
 
 		try {
-			Collection<Actor> actors = new ArrayList<>();
+			Collection<Actor> actors = new ArrayList<Actor>();
 			Element rootElement = reader.parse(layoutFile);
 			if (rootElement.getName().equals("Layout")) {
 				for (int i = 0; i < rootElement.getChildCount(); i++) {
@@ -113,17 +113,19 @@ public class LayoutParser {
 
 	public void save(FileHandle layoutFile, Collection<Actor> actors)
 			throws LayoutParseException {
-		try (XmlWriter writer = new XmlWriter(layoutFile.writer(false))) {
+		try {
+			XmlWriter writer = new XmlWriter(layoutFile.writer(false));
 			LayoutParserContext context = new LayoutParserContext();
 			context.setParsers(parsers);
-			
+
 			writer.element("Layout");
-			
+
 			for (Actor i : actors) {
 				parsers.getParserByClass(i.getClass()).save(writer, i, context);
 			}
-			
+
 			writer.pop();
+			writer.close();
 		} catch (IOException e) {
 			throw new LayoutParseException(e);
 		}
