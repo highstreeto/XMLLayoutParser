@@ -127,7 +127,7 @@ public class LayoutParser {
 			writer.pop();
 			writer.close();
 		} catch (IOException e) {
-			throw new LayoutParseException(e);
+			throw new LayoutParseException(e); // TODO More detailed Exception
 		}
 	}
 }

@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import at.highstreeto.XMLLayoutParser.element.CellParser;
+import at.highstreeto.XMLLayoutParser.element.ImageButtonParser;
 import at.highstreeto.XMLLayoutParser.element.LabelParser;
 import at.highstreeto.XMLLayoutParser.element.RowParser;
 import at.highstreeto.XMLLayoutParser.element.TableParser;
@@ -48,6 +49,7 @@ public class ElementParsers {
 		parsers.addParser(new TableParser());
 		parsers.addParser(new RowParser());
 		parsers.addParser(new CellParser());
+		parsers.addParser(new ImageButtonParser());
 
 		return parsers;
 	}

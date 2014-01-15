@@ -25,7 +25,8 @@ public class ImageButtonParser implements ElementParser {
 	@Override
 	public Actor load(Element element, LayoutParserContext context)
 			throws LayoutParseException {
-		ImageButton imageButton = new ImageButton(context.getSkin());
+		ImageButton imageButton = new ImageButton(context.getSkin(),
+				ElementParserHelper.getStyle(element));
 
 		context.addActor(imageButton, element);
 		ElementParserHelper.setActorName(element, imageButton);
