@@ -33,21 +33,24 @@ import com.badlogic.gdx.utils.XmlReader.Element;
 public interface ElementParser {
 
 	/**
-	 * Returns the name of the name of the XML element
+	 * Returns the name of the XML element that can be loaded
 	 * 
-	 * @return
+	 * @return Name of the XML Element that can be loaded
 	 */
 	String getElementName();
 
 	/**
+	 * Returns the class that this parser can save
 	 * 
-	 * @return
+	 * @return Class, that this parser can save
 	 */
 	Class<? extends Actor> getActorClass();
 
 	/**
+	 * Reads an Actor from the XML-Element element
 	 * 
 	 * @param element
+	 * @param context
 	 * @return
 	 * @throws LayoutParseException
 	 */
@@ -55,7 +58,7 @@ public interface ElementParser {
 			throws LayoutParseException;
 
 	/**
-	 * 
+	 * Saves an Actor with the XmlWriter writer
 	 * @param actor
 	 * @throws LayoutParseException
 	 */

@@ -14,6 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
  */
 
+/* Global TODOs
+ * 
+ * TODO: Add more documentation
+ * TODO: Implement saving of actors
+ * TODO: Add examples and tutorials how to use this piece of software
+ */
+
 package at.highstreeto.XMLLayoutParser;
 
 import java.io.IOException;
@@ -111,6 +118,12 @@ public class LayoutParser {
 		}
 	}
 
+	/**
+	 * 
+	 * @param layoutFile
+	 * @param actors
+	 * @throws LayoutParseException
+	 */
 	public void save(FileHandle layoutFile, Collection<Actor> actors)
 			throws LayoutParseException {
 		try {
