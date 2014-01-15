@@ -58,6 +58,23 @@ public class TableParser implements ElementParser {
 				}
 			}
 		}
+		// Combination of c (Center), t (Top), b (Bottom), l (Left), r (Right)
+		if (element.getAttributes().containsKey("align")) {
+			String[] parts = element.getAttribute("align").split(" ");
+			for (String i : parts) {
+				if ("c".equals(i)) {
+					table.center();
+				} else if ("t".equals(i)) {
+					table.top();
+				} else if ("b".equals(i)) {
+					table.bottom();
+				} else if ("l".equals(i)) {
+					table.left();
+				} else if ("r".equals(i)) {
+					table.right();
+				}
+			}
+		}
 
 		context.addActor(table, element);
 		ElementParserHelper.setActorName(element, table);

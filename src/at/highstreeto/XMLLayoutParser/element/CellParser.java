@@ -59,7 +59,36 @@ public class CellParser implements ElementParser {
 			} else {
 				throw new LayoutParseException();
 			}
-		} // Padding - Format: Top Left Bottom Right
+		}
+		if (element.getAttributes().containsKey("expand")) {
+			if ("x".equals(element.getAttribute("expand"))) {
+				cell.expandX();
+			} else if ("y".equals(element.getAttribute("expand"))) {
+				cell.expandY();
+			} else if ("xy".equals(element.getAttribute("expand"))) {
+				cell.expand();
+			} else {
+				throw new LayoutParseException();
+			}
+		}
+		// Combination of c (Center), t (Top), b (Bottom), l (Left), r (Right)
+		if (element.getAttributes().containsKey("align")) {
+			String[] parts = element.getAttribute("align").split(" ");
+			for (String i : parts) {
+				if ("c".equals(i)) {
+					cell.center();
+				} else if ("t".equals(i)) {
+					cell.top();
+				} else if ("b".equals(i)) {
+					cell.bottom();
+				} else if ("l".equals(i)) {
+					cell.left();
+				} else if ("r".equals(i)) {
+					cell.right();
+				}
+			}
+		}
+		// Padding - Format: Top Left Bottom Right
 		if (element.getAttributes().containsKey("pad")) {
 			String[] pads = element.getAttribute("pad").split(" ");
 			if (pads.length == 4) {
