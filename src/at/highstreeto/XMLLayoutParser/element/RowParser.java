@@ -16,14 +16,14 @@ limitations under the License.
 
 package at.highstreeto.XMLLayoutParser.element;
 
+import at.highstreeto.XMLLayoutParser.LayoutParseException;
+import at.highstreeto.XMLLayoutParser.LayoutParserContext;
+import at.highstreeto.XMLLayoutParser.element.base.ElementParser;
+
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.XmlReader.Element;
 import com.badlogic.gdx.utils.XmlWriter;
-
-import at.highstreeto.XMLLayoutParser.LayoutParseException;
-import at.highstreeto.XMLLayoutParser.LayoutParserContext;
-import at.highstreeto.XMLLayoutParser.element.base.ElementParser;
 
 public class RowParser implements ElementParser {
 
@@ -53,8 +53,6 @@ public class RowParser implements ElementParser {
 	@Override
 	public void save(XmlWriter writer, Actor actor, LayoutParserContext context)
 			throws LayoutParseException {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

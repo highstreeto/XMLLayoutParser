@@ -31,6 +31,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.utils.SerializationException;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
 import com.badlogic.gdx.utils.XmlWriter;
@@ -102,6 +103,8 @@ public class LayoutParser {
 			}
 		} catch (IOException e) {
 			throw new LayoutParseException(e); // TODO More detailed Exception
+		} catch (SerializationException e) {
+			throw new LayoutParseException(e);
 		}
 	}
 

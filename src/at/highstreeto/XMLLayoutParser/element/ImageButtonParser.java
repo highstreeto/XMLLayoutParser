@@ -37,8 +37,6 @@ public class ImageButtonParser implements ElementParser {
 	@Override
 	public void save(XmlWriter writer, Actor actor, LayoutParserContext context)
 			throws LayoutParseException {
-		// TODO Auto-generated method stub
-
 	}
 
 }
