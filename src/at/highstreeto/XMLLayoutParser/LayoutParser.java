@@ -18,7 +18,7 @@ limitations under the License.
  * 
  * TODO: Add more documentation
  * TODO: Implement saving of actors
- * TODO: Add examples and tutorials how to use this piece of software
+ * TODO: Add examples and tutorials how to use this
  */
 
 package at.highstreeto.XMLLayoutParser;
