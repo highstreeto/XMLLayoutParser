@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="javadoc">
-    <target name="javadoc">
-        <javadoc access="public" author="true" classpath="libs/gdx.jar" destdir="doc" doctitle="XMLLayoutParser" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="at.highstreeto.XMLLayoutParser.element.base,at.highstreeto.XMLLayoutParser,at.highstreeto.XMLLayoutParser.element" source="1.7" sourcepath="src" splitindex="true" use="true" version="true"/>
-    </target>
-</project>
