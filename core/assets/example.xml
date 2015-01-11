@@ -1,0 +1,30 @@
+<Layout>
+	<Table fillParent="true">
+		<Row>
+			<Cell fill="xy" pad="0 0 0 5">
+				<Label>Server: </Label>
+			</Cell>
+			<Cell fill="xy">
+				<TextField name="tfServer" >localhost</TextField>
+			</Cell>
+		</Row>
+		<Row>
+			<Cell fill="xy" pad="0 0 0 5">
+				<Label>SpielerName: </Label>
+			</Cell>
+			<Cell fill="xy">
+				<TextField name="tfPlayerName" />
+			</Cell>
+		</Row>
+		<Row>
+			<Cell colspan="2" pad="10 0 0 0">
+				<TextButton name="btStart" >Start</TextButton>
+			</Cell>
+		</Row>
+		<Row>
+			<Cell colspan="2" pad="10 0 0 0">
+				<Label name="laStatus" styleName="red" />
+			</Cell>
+		</Row>
+	</Table>
+</Layout>
